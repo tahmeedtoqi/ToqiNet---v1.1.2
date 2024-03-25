@@ -1,4 +1,4 @@
-<h3>ToqiNet<h3>
+<h1>ToqiNet<h1>
 <h2>Model Overview</h2>
 
 <p>ToqiNet is an advanced deep learning model tailored for image classification tasks. It utilizes convolutional neural networks (CNNs) to extract features from input images and make accurate predictions about their respective classes. In this section, we'll explore how ToqiNet works and delve into its underlying algorithms and functionality.</p>
