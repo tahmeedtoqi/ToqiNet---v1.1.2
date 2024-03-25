@@ -1,0 +1,7 @@
+torch_version: 1.8
+entry_points:
+  model: ToqiNet
+  class: ToqiNet
+  script: model.py
+dependencies:
+  - torch
