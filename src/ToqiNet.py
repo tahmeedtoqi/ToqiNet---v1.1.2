@@ -112,18 +112,16 @@ class ToqiNet(nn.Module):
 
     
         self.classifier = nn.Sequential(
+            nn.AdaptiveAvgPool2d((1, 1)),
+            nn.Flatten(),
             nn.Dropout(0.5),
-            nn.Linear(self.features_output_shape, 4096),
-            nn.ReLU(),
-            nn.Dropout(0.5),
-            nn.Linear(4096, 4096),
-            nn.ReLU(),
-            nn.Linear(4096, self.num_classes),
+            nn.Linear(256, num_classes)
         )
 
         self.similarity_threshold = 0.6
 
-        self.optimizer = optim.SGD(self.parameters(), lr=0.001, weight_decay=weight_decay)
+        self.optimizer = optim.Adam(self.parameters(), lr=1e-4, betas=(0.9, 0.999), weight_decay=1e-4)
+
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -133,7 +131,6 @@ class ToqiNet(nn.Module):
 
     def forward(self, x):
         x = self.features(x)
-        x = torch.flatten(x, 1)
         x = self.classifier(x)
         return x
 
@@ -189,7 +186,7 @@ class ToqiNet(nn.Module):
             flattened_features = torch.flatten(features)
             learned_parameters = torch.flatten(torch.cat([param.view(-1) for param in self.parameters()]))
             similarity = torch.cosine_similarity(flattened_features, learned_parameters, dim=0)
-            return similarity.item()   
+            return similarity.item() 
 
 
 
