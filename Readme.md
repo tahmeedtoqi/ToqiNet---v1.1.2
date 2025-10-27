@@ -31,6 +31,8 @@
 
 <p>ToqiNet employs cross-entropy loss as the objective function to measure the discrepancy between the predicted class probabilities and the ground truth labels. By minimizing the cross-entropy loss during training, ToqiNet learns to make more accurate predictions and achieve higher classification accuracy.</p>
 
+![ToqiNet Banner](ToqiNet.png)
+
 <h2>Training and Evaluation</h2>
 
 <p>To train ToqiNet, we utilize labeled image datasets and follow a standard training procedure:</p>
@@ -272,3 +274,4 @@ for class_name, class_idx in test_dataset.data.class_to_idx.items():
 <p>For inquiries, please contact tahmeedtoqi123@gmail.com.</p>
 
 <p><a href="https://web.facebook.com/tahmeedtoqi777/">account</a>.</p>
+
